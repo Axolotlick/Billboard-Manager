@@ -1,26 +1,26 @@
 package ru.netology.manager;
 
-import ru.netology.posterItem;
+import ru.netology.PosterItem;
 
-public class posterManager {
-    private posterItem[] items = new posterItem[0];
+public class PosterManager {
+    private PosterItem[] items = new PosterItem[0];
     private int numberOfDisplayedFilms = 10;
 
-    public posterManager(int numberOfDisplayedFilms) {
+    public PosterManager(int numberOfDisplayedFilms) {
         this.numberOfDisplayedFilms = numberOfDisplayedFilms;
     }
 
-    public posterManager() {
+    public PosterManager() {
     }
 
-    public posterItem[] findLessOrEqualFixedAmount() {
+    public PosterItem[] findLessOrEqualFixedAmount() {
         int resultLength;
         if (items.length < numberOfDisplayedFilms) {
             resultLength = items.length;
         } else {
             resultLength = numberOfDisplayedFilms;
         }
-        posterItem[] result = new posterItem[resultLength];
+        PosterItem[] result = new PosterItem[resultLength];
         for (int i = items.length - resultLength; i < items.length; i++) {
             int index = items.length - i + (items.length - resultLength - 1);
             result[i - (items.length - resultLength)] = items[index];
@@ -28,9 +28,9 @@ public class posterManager {
         return result;
     }
 
-    public void save(posterItem item) {
+    public void save(PosterItem item) {
         int length = items.length + 1;
-        posterItem[] tmp = new posterItem[length];
+        PosterItem[] tmp = new PosterItem[length];
         for (int i = 0; i < items.length; i++) {
             tmp[i] = items[i];
         }
@@ -40,8 +40,8 @@ public class posterManager {
 
     }
 
-    public posterItem[] getAll() {
-        posterItem[] result = new posterItem[items.length];
+    public PosterItem[] getAll() {
+        PosterItem[] result = new PosterItem[items.length];
         for (int i = 0; i < result.length; i++) {
             int index = items.length - i - 1;
             result[i] = items[index];
@@ -51,9 +51,9 @@ public class posterManager {
 
     public void removeById(int id) {
         int length = items.length - 1;
-        posterItem[] tmp2 = new posterItem[length];
+        PosterItem[] tmp2 = new PosterItem[length];
         int index = 0;
-        for (posterItem item : items) {
+        for (PosterItem item : items) {
             if (item.getId() != id) {
                 tmp2[index] = item;
                 index++;
@@ -61,5 +61,4 @@ public class posterManager {
         }
         items = tmp2;
     }
-
 }
